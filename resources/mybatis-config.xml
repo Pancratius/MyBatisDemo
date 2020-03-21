@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--    属性文件-->
+    <properties resource="db.properties"></properties>
+
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <!--    类型别名 package 表示从此包下查找相应的类型-->
+    <typeAliases>
+        <package name="com.pancras.domain"/>
+    </typeAliases>
+
+    <!--    定义运行环境-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--  映射具体的ORM 文件关系  -->
+    <mappers>
+        <mapper resource="com/pancras/mapper/StudentMapper.xml"></mapper>
+    </mappers>
+</configuration>
